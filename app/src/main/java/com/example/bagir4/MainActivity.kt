@@ -301,6 +301,10 @@ private fun ProductPreview() {
     ProductItem()
 }
 
+fun asda(){
+
+}
+
 @Preview
 @Composable
 private fun HomeScreenPreview() {
