@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,12 +22,9 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -39,11 +37,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.bagir4.ui.theme.Bagir4Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,13 +79,13 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             R.drawable.nike_zoom,
             "Best Seller",
             "Nice Air Max",
-            752.00
+            "752.00"
         ),
         Product(
             R.drawable.nike_zoom,
             "Best Seller",
             "Nike Air Max",
-            752.00
+            "752.00"
         )
     )
     var searchField by remember { mutableStateOf("") }
@@ -238,7 +234,7 @@ data class Product(
     val photo: Int,
     val subtext: String,
     val name: String,
-    val price: Double
+    val price: String
 )
 
 @Composable
@@ -265,32 +261,117 @@ fun CategoryItem(category: Category) {
 }
 
 @Composable
-fun ProductItem(modifier: Modifier = Modifier) {
-    Column(modifier
-        .fillMaxSize()
-        .background(Color(0xfff7f7f9)))
+fun ProductItem(modifier: Modifier) {
+    // Колонна для вывода изображения
+    Column(
+        modifier
+            .fillMaxSize()
+            .background(Color(0xfff7f7f9))
+    )
     {
+        // Основной кард
         Card(
             modifier
-                .height(160.dp)
-                .width(182.dp),
+                .height(182.dp)
+                .width(160.dp),
             colors = CardDefaults.cardColors(Color.White),
             shape = RoundedCornerShape(16.dp)
-        ) {
-            Column() {
-                Box() {
+        )
+        {
+            Column(Modifier.fillMaxSize()) {
+                Column(
+                    Modifier
+                        .padding(horizontal = 9.dp)
+                ) {
                     Box() {
-                        Card() {
-                            Icon(
-                                painter = painterResource(R.drawable.path),
-                                contentDescription = null,
-                                tint = Color.Unspecified
-                            )
+                        Box(
+                            Modifier
+                                .width(142.dp)
+                                .height(70.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Box(
+                                Modifier
+                                    .width(142.dp)
+                                    .height(88.dp)
+                                    .padding(top = 18.dp)
+                            ) {
+                                Image(
+                                    painter = painterResource(R.drawable.nike_zoom),
+                                    contentDescription = null,
+                                    modifier
+                                        .width(142.dp)
+                                        .height(88.dp)
+                                )
+
+                            }
                         }
+                        // Кард сердечка
+                        Box(
+                            Modifier
+                                .padding(top = 9.dp)
+                        ) {
+
+                            Card(
+                                modifier.size(28.dp),
+                                shape = CircleShape
+                            )
+                            {
+                                // Бокс сердечка
+                                Box(
+                                    Modifier.fillMaxSize(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    //Иконка сердечка
+                                    Icon(
+                                        painter = painterResource(R.drawable.path),
+                                        contentDescription = null,
+                                        tint = Color.Unspecified
+                                    )
+                                }
+
+                            }
+                        }
+
                     }
+                    Spacer(Modifier.height(12.dp))
+                    Column(Modifier.fillMaxWidth()
+                        .height(44.dp)) {
+                        Box(
+                        Modifier.height(16.dp)
+                        ){
+                            Text("BEST SELLER", fontSize = 12.sp, color = Color(0xff48b2e7))
+                        }
+
+                        Spacer(Modifier.height(8.dp))
+                        Box(Modifier.height(20.dp)){
+                            Text("Nike Air Pro", fontSize = 16.sp, color = Color(0xff6a6a6a))
+                        }
+
+                    }
+
+                }
+                Spacer(Modifier.height(4.dp))
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(34.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(Modifier.padding(start = 9.dp)) {
+                        Text("752.00")
+                    }
+                    Spacer(Modifier.width(77.dp))
+                    Box(modifier = modifier.fillMaxWidth()) {
+                        Icon(
+                            painter = painterResource(R.drawable.plus_button),
+                            contentDescription = null,
+                            tint = Color.Unspecified,
+                        )
+                    }
+
                 }
             }
-
         }
     }
 }
@@ -298,12 +379,11 @@ fun ProductItem(modifier: Modifier = Modifier) {
 @Preview
 @Composable
 private fun ProductPreview() {
-    ProductItem()
+    ProductItem(
+        modifier = Modifier
+    )
 }
 
-fun asda(){
-
-}
 
 @Preview
 @Composable
