@@ -37,7 +37,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -168,7 +167,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 },
 
                 )
-            Spacer(Modifier.width(14.dp))
+            Spacer(Modifier.width(23.dp))
             Card(
                 modifier.size(52.dp),
                 colors = CardDefaults.cardColors(Color(0xff48b2e7)),
@@ -222,9 +221,11 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
         Spacer(Modifier.height(30.dp))
 
-        Row(Modifier
-            .fillMaxWidth()
-            .height(182.dp)) {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .height(182.dp)
+        ) {
             ProductItem(modifier = Modifier)
             Spacer(Modifier.width(15.dp))
             ProductItem(modifier = Modifier)
@@ -249,21 +250,80 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             colors = CardDefaults.cardColors(Color.White)
         ) {
             Box(Modifier.fillMaxSize()) {
-                Column(Modifier
-                    .padding(start = 22.dp, top = 20.dp)
-                    .width(138.dp)
-                    .height(55.dp)) {
+                Column(
+                    Modifier
+                        .padding(start = 22.dp, top = 20.dp)
+                        .width(138.dp)
+                        .height(55.dp)
+                ) {
                     Text("Summer Sale", fontSize = 12.sp)
                     Spacer(Modifier.height(4.dp))
-                    Text("15% OFF", fontSize = 32.sp, color = Color(0xff674dc5))
+                    Text(
+                        "15% OFF", fontSize = 32.sp, color = Color(0xff674dc5),
+
+                        )
                 }
+                Box(Modifier.fillMaxSize()) {
+                    Box(Modifier
+                        .fillMaxSize()
+                        .padding(start = 192.dp, 3.dp)
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.nike_vector),
+                            contentDescription = null,
+                            tint = Color.Unspecified
+                        )
+                    }
+                    Box(Modifier
+                        .fillMaxSize()
+                        .padding(start = 8.dp, top = 60.dp)) {
+                        Icon(
+                            painter = painterResource(R.drawable.vector_2),
+                            contentDescription = null,
+                            tint = Color.Unspecified
+                        )
+                    }
+                    Box(Modifier
+                        .fillMaxSize()
+                        .padding(start = 130.dp, top = 4.dp)) {
+                        Icon(
+                            painter = painterResource(R.drawable.vector_2),
+                            contentDescription = null,
+                            tint = Color.Unspecified
+                        )
+                    }
+                    Box(Modifier
+                        .fillMaxSize()
+                        .padding(start = 158.dp, top = 66.dp)) {
+                        Icon(
+                            painter = painterResource(R.drawable.vector_2),
+                            contentDescription = null,
+                            tint = Color.Unspecified
+                        )
+                    }
+                    Box(Modifier
+                        .fillMaxSize()
+                        .padding(start = 310.dp, top = 15.dp)) {
+                        Icon(
+                            painter = painterResource(R.drawable.vector_2),
+                            contentDescription = null,
+                            tint = Color.Unspecified
+                        )
+                    }
+                    Box(Modifier.fillMaxSize().padding(start = 176.dp, top = 12.dp)){
+                        Icon(painter = painterResource(R.drawable.misc_06), contentDescription = null, tint = Color.Unspecified)
+                    }
+                }
+
             }
         }
 
         Spacer(Modifier.height(21.dp))
 
-        Box(Modifier.fillMaxWidth().height(106.dp)){
-            Card (
+        Box(Modifier
+            .fillMaxWidth()
+            .height(106.dp)) {
+            Card(
                 colors = CardDefaults.cardColors(Color(0xff48b2e7))
             ) {
 
@@ -405,9 +465,11 @@ fun ProductItem(modifier: Modifier) {
                     Text("752.00")
                 }
                 Spacer(Modifier.width(77.dp))
-                Box(modifier = modifier
-                    .fillMaxWidth()
-                    .height(34.dp)) {
+                Box(
+                    modifier = modifier
+                        .fillMaxWidth()
+                        .height(34.dp)
+                ) {
                     Card(
                         shape = RoundedCornerShape(topStart = 16.dp),
                         colors = CardDefaults.cardColors(Color(0xff48b2e7))
